@@ -34,7 +34,6 @@ if current_date in birthday_dict.keys():
     message = f"Happy birthday {info[2]}!"
     if info[3] == "Friend":
         message = "happy bday bro"
-    provider = "Verizon"
     sender_credentials = ("ezraakresh@gmail.com", "xdkx fnrt azmh xkzg")
     try:
         send_sms_via_email(info[0], message, info[1], sender_credentials)
