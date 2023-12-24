@@ -7,7 +7,7 @@ import ssl
 from providers import PROVIDERS
 
 with open('birthdays.txt', 'r') as file:
-    birthday_dict = {bday.strip(): [num.strip(), carrier.strip(), name.strip()] for bday, name, num, carrier in (line.split(":") for line in file)}
+    birthday_dict = {bday.strip(): [num.strip(), carrier.strip(), name.strip(), relationship.strip()] for bday, name, num, carrier, relationship in (line.split(":") for line in file)}
 
 current_date = current_month = '-'.join(str(datetime.now().date()).split("-")[1:])
 
@@ -32,6 +32,11 @@ def send_sms_via_email(
 if current_date in birthday_dict.keys():
     info = birthday_dict[current_date]
     message = f"Happy birthday {info[2]}!"
+    if info[3] == "Friend":
+        message = "happy bday bro"
     provider = "Verizon"
     sender_credentials = ("ezraakresh@gmail.com", "xdkx fnrt azmh xkzg")
-    send_sms_via_email(info[0], message, info[1], sender_credentials)
+    try:
+        send_sms_via_email(info[0], message, info[1], sender_credentials)
+    except:
+        pass
