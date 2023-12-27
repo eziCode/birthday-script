@@ -33,15 +33,12 @@ def send_sms_via_email(
         email.sendmail(sender_email, reciever_email, email_message)
 
 if current_date in birthday_dict.keys():
-    print("j")
     info = birthday_dict[current_date]
     message = f"Happy birthday {info[2]}!"
     if info[3] == "Friend":
         message = "happy bday bro"
     sender_credentials = (gmail.strip(), password.strip())
-    print(sender_credentials)
     try:
-        #send_sms_via_email(info[0], message, info[1], sender_credentials)
-        print("d")
+        send_sms_via_email(info[0], message, info[1], sender_credentials)
     except:
         pass
